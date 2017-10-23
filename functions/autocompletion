@@ -1,0 +1,29 @@
+autoload -U compinit && compinit # Enable autocompletion
+autoload -U +X bashcompinit && bashcompinit # Also use bash only completions
+
+source ~/.zsh/dep/zsh-history-substring-search/zsh-history-substring-search.zsh
+
+# Setup zsh-autosuggestions
+source ~/.zsh/dep/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+setopt correct
+setopt correctall
+setopt auto_menu
+#setopt prompt_subst
+
+zle -N incremental-complete-word
+zstyle ':completion:*' verbose yes
+zstyle ':completion:*' menu select # Menu based autocompletion
+zstyle ':completion:*' completer _oldlist _complete
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
+
+zstyle ':completion:*:processes' command 'ps -au$USER'
+zstyle ':completion:*:*:kill:*' menu yes select # Complete kill <process>
+
+zmodload zsh/terminfo
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+
+compinit
