@@ -2,12 +2,6 @@
 # Options
 #
 
-if [ ! -e ~/.zsh/antigen ]; then
-    git clone https://github.com/zsh-users/antigen ~/.zsh/antigen
-fi
-
-source ~/.zsh/antigen/antigen.zsh
-
 LOAD_MODULES=(
     "sane-defaults"
     "history"
@@ -27,6 +21,12 @@ DEFAULT_THEME="powerlevel9k_plain"
 FALLBACK_THEME="gears_plain"
 
 #### Do not change anything after this file
+
+if [ ! -e ~/.zsh/antigen ]; then
+    git clone https://github.com/zsh-users/antigen ~/.zsh/antigen
+fi
+
+source ~/.zsh/antigen/antigen.zsh
 
 autoload -U colors && colors													# Enable colors in prompt
 
@@ -76,10 +76,10 @@ antigen apply
 # Emacs tramp fix
 if [[ "$TERM" == "dumb" ]]
 then
-  unsetopt zle
-  unsetopt prompt_cr
-  unsetopt prompt_subst
-  unfunction precmd
-  unfunction preexec
-  PS1='$ '
+    unsetopt zle
+    unsetopt prompt_cr
+    unsetopt prompt_subst
+    unfunction precmd
+    unfunction preexec
+    PS1='$ '
 fi
