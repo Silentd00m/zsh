@@ -1,0 +1,2 @@
+AUTO_LS_COMMANDS=(ls)
+antigen bundle desyncr/auto-ls
