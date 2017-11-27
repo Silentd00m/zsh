@@ -7,3 +7,6 @@
 [submodule "dep/antigen"]
 	path = dep/antigen
 	url = https://github.com/zsh-users/antigen
+[submodule "dep/auto-fu.zsh"]
+	path = dep/auto-fu.zsh
+	url = https://github.com/hchbaw/auto-fu.zsh
