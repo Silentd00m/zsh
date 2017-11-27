@@ -1,3 +1,6 @@
+antigen bundle supercrabtree/k
+antigen bundle unixorn/git-extra-commands
+
 function __git_IsRepo()
 {
 	git status &> /dev/null
@@ -48,8 +51,12 @@ function __git_RepoStatus()
 	if [[ \
 		$__git_repoStaged -eq 0 && \
 		$__git_repoUnstaged -eq 0 \
-	]]; then
-		output+=$THEME_ICON_OK
+	   ]]; then
+        if git rev-parse --abbrev-ref HEAD &> /dev/null; then
+		    output+=$THEME_ICON_OK
+        else
+            output+="no commits"
+        fi
 	fi
 
 	echo " ["$output"]"
@@ -57,8 +64,12 @@ function __git_RepoStatus()
 
 function __git_BranchInfo()
 {
-#	output=$THEME_ICON_BRANCH
-	output=$(git rev-parse --abbrev-ref HEAD)
+    output=""
+
+    if git rev-parse --abbrev-ref HEAD &> /dev/null; then
+        output=$THEME_ICON_BRANCH
+	    output=$output$(git rev-parse --abbrev-ref HEAD)
+    fi
 
 	echo $output
 }

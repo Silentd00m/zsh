@@ -5,8 +5,8 @@ THEME_SEPCOLOR1=("%{$fg[blue]%}" "%{$bg[white]%}")
 THEME_SEPCOLOR2=("%{$fg[white]%}" "%{$bg[green]%}")
 THEME_SEPCOLOR3=("%{$reset_color%}" "%{$fg[green]%}")
 
-THEME_ICON_SEPARATOR=""
-THEME_ICON_BRANCH="⭠"
+THEME_ICON_SEPARATOR="" # 
+THEME_ICON_BRANCH=""
 THEME_ICON_ADDED="+"
 THEME_ICON_REMOVED="-"
 THEME_ICON_CHANGED="•"
@@ -14,6 +14,8 @@ THEME_ICON_MOVED="►"
 THEME_ICON_OK="√"
 THEME_ICON_AHEAD="▲"
 THEME_ICON_BEHIND="▼"
+THEME_ICON_REPOSITORY="" #
+THEME_ICON_LOCK=""
 
 #   
 
@@ -32,15 +34,20 @@ function __theme_Directory()
     output=""
 
     if [[ "$PWD" != "/" ]]; then
-	__prompt_dir=$(dirname $PWD)
+	    __prompt_dir=$(dirname $PWD)
 
-	for segment in $(echo $__prompt_dir | sed -e 's/\// /g'); do
-	    output+="/"${segment[1]}
-	done
+	    for segment in $(echo $__prompt_dir | sed -e 's/\// /g'); do
+	        output+="/"${segment[1]}
+	    done
 
-	output+="/"$(basename $PWD)
+	    output+="/"$(basename $PWD)
     else
-	output="/"
+	    output="/"
+    fi
+
+    if [[ ! -w "$PWD" ]]; then
+        errcolor=("%{$fg[red]%}")
+        output+=$errcolor" "$THEME_ICON_LOCK
     fi
 
     echo $output
@@ -52,14 +59,14 @@ function __theme_Draw()
     PROMPT+=$THEME_SEPCOLOR1[1]$THEME_SEPCOLOR1[2]$THEME_ICON_SEPARATOR
 
     if [[ ${#THEME_PROMPTSOURCE_LEFT[3]} -eq 0 ]]; then
-	PROMPT+=$THEME_COLOR[2]$THEME_PROMPTSOURCE_LEFT[2]
-	PROMPT+=$THEME_SEPCOLOR3[1]$THEME_SEPCOLOR2[1]$THEME_ICON_SEPARATOR
+	    PROMPT+=$THEME_COLOR[2]$THEME_PROMPTSOURCE_LEFT[2]
+	    PROMPT+=$THEME_SEPCOLOR3[1]$THEME_SEPCOLOR2[1]$THEME_ICON_SEPARATOR
     else
-	PROMPT+=$THEME_COLOR[2]$THEME_PROMPTSOURCE_LEFT[2]
-	PROMPT+=$THEME_SEPCOLOR2[1]$THEME_SEPCOLOR2[2]$THEME_ICON_SEPARATOR
+	    PROMPT+=$THEME_COLOR[2]$THEME_PROMPTSOURCE_LEFT[2]
+	    PROMPT+=$THEME_SEPCOLOR2[1]$THEME_SEPCOLOR2[2]$THEME_ICON_SEPARATOR
 
-	PROMPT+=$THEME_COLOR[3]$THEME_PROMPTSOURCE_LEFT[3]
-	PROMPT+=$THEME_SEPCOLOR3[1]$THEME_SEPCOLOR3[2]$THEME_ICON_SEPARATOR
+	    PROMPT+=$THEME_COLOR[3]$THEME_PROMPTSOURCE_LEFT[3]
+	    PROMPT+=$THEME_SEPCOLOR3[1]$THEME_SEPCOLOR3[2]$THEME_ICON_SEPARATOR
     fi
 
     PROMPT+="%{$reset_color%} "
@@ -122,4 +129,13 @@ function __theme_OnCMD()
     done
 
     __theme_Draw
+}
+
+function chpwd()
+{
+    __theme_OnPWD
+}
+function precmd()
+{
+    __theme_OnCMD
 }

@@ -13,3 +13,10 @@ setopt hist_find_no_dups										# Do not display a previously found event.
 setopt hist_ignore_space										# Do not record an event starting with a space.
 setopt hist_save_no_dups										# Do not write a duplicate event to the history file.
 setopt hist_verify											# Do not execute immediately upon history expansion.
+
+function __list_contains() {
+    [[ $1 =~ (^|[[:space:]])"$2"($|[[:space:]]) ]] && exit(0) || exit(1)
+}
+
+antigen bundle zsh-users/zsh-history-substring-search
+antigen bundle install zdharma/history-search-multi-word

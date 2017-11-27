@@ -1,0 +1,9 @@
+[submodule "dep/enhancd"]
+	path = dep/enhancd
+	url = https://github.com/b4b4r07/enhancd
+[submodule "dep/k"]
+	path = dep/k
+	url = https://github.com/supercrabtree/k
+[submodule "dep/antigen"]
+	path = dep/antigen
+	url = https://github.com/zsh-users/antigen
