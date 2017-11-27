@@ -16,6 +16,7 @@ LOAD_MODULES=(
     "alias-reminder"
     "terminal-titles"
     "auto-ls"
+    "fonts-and-profile"
 )
 DEFAULT_THEME="gears_fancy"
 FALLBACK_THEME="gears_plain"
@@ -60,8 +61,7 @@ function unzip_all() {
     find -name '*.zip' -exec sh -c 'unzip -d "${1%.*}" "$1"' _ {} \;
 }
 
-export SSH_ASKPASS=`which ksshaskpass`
-export EDITOR=`which nvim`
+source ~/.zsh/custom-config.zsh
 
 antigen apply
 

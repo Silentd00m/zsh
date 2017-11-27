@@ -1,0 +1,58 @@
+if [ ! -e ".local/share/fonts/Source Code Pro for Powerline.otf" ]; then
+    echo "[Desktop Entry]
+DefaultProfile=Profil 1.profile
+
+[Dialogs]
+FirstRun=false
+
+[DownloadDialog Settings]
+Height 1080=518
+Width 1920=700
+
+[Favorite Profiles]
+Favorites=
+
+[Shortcuts]
+close-active-terminal=Ctrl+Shift+R
+close-session=Ctrl+Shift+W
+decrease-window-height=Alt+Shift+Up
+decrease-window-width=Alt+Shift+Left
+file_quit=Ctrl+Shift+Q
+grow-terminal-bottom=Ctrl+Alt+Down
+grow-terminal-left=Ctrl+Alt+Left
+grow-terminal-right=Ctrl+Alt+Right
+grow-terminal-top=Ctrl+Alt+Up
+increase-window-height=Alt+Shift+Down
+increase-window-width=Alt+Shift+Right
+move-session-left=Ctrl+Shift+Left
+move-session-right=Ctrl+Shift+Right
+new-session=Ctrl+Shift+T
+next-session=Shift+Right
+next-terminal=Ctrl+Shift+Down
+previous-session=Shift+Left
+previous-terminal=Ctrl+Shift+Up
+rename-session=Ctrl+Alt+S
+split-left-right=Ctrl+(
+split-top-bottom=Ctrl+)
+toggle-session-monitor-activity=Ctrl+Shift+A
+toggle-session-monitor-silence=Ctrl+Shift+I
+view-full-screen=F11
+
+[Window]
+Height=40
+Width=100" > ~/.config/yakuakerc
+
+   echo "[Appearance]
+ColorScheme=Solarized
+Font=Source Code Pro for Powerline,10,-1,5,50,0,0,0,0,0
+
+[General]
+Name=Profil 1
+Parent=FALLBACK/
+
+[Interaction Options]
+OpenLinksByDirectClickEnabled=true" > ~/.local/share/konsole/Profile\ 1.profile
+
+   git clone https://github.com/powerline/fonts ~/.zsh/dep/fonts --depth 1
+   bash ~/.zsh/dep/fonts/install.sh
+fi
