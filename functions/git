@@ -1,6 +1,35 @@
 antigen bundle supercrabtree/k
 antigen bundle unixorn/git-extra-commands
 
+alias kh="k -h"
+
+git-pull() {
+    if [ $# -eq 2 ]; then
+        git pull --rebase -q $2 "$(git rev-parse --abbrev-ref HEAD)"
+    else
+        git pull --rebase -q origin "$(git rev-parse --abbrev-ref HEAD)"
+    fi
+}
+
+git-push() {
+    if [ $# -eq 2 ]; then
+        git push -q $2 "$(git rev-parse --abbrev-ref HEAD)"
+    else
+        git push -q origin "$(git rev-parse --abbrev-ref HEAD)"
+    fi
+}
+
+git-send() {
+    git add "$(git rev-parse --show-toplevel)"
+    if [ $# -eq 1 ]; then
+        git commit -a -m "$1"
+    else
+        git commit -a -m "I'm too lazy to write a commit message."
+    fi
+    git-pull
+    git-push
+}
+
 function __git_IsRepo()
 {
 	git status &> /dev/null

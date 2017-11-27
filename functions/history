@@ -18,5 +18,7 @@ function __list_contains() {
     [[ $1 =~ (^|[[:space:]])"$2"($|[[:space:]]) ]] && exit(0) || exit(1)
 }
 
+zstyle ":plugin:history-search-multi-word" clear-on-cancel "yes"
+
 antigen bundle zsh-users/zsh-history-substring-search
-antigen bundle install zdharma/history-search-multi-word
+antigen bundle zdharma/history-search-multi-word

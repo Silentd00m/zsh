@@ -32,7 +32,9 @@ function notifyosd-precmd() {
 function notifyosd-notify()
 {
     if [[ "$OSTYPE" == "linux-gnu" ]]; then
-        notify-send -i utilities-terminal -u low $1
+        if [ which notify-send ]; then
+            notify-send -i utilities-terminal -u low $1
+        fi
     elif [[ "$OSTYPE" == "darwin"* ]]; then
         terminal-notifier -message $1
     fi
