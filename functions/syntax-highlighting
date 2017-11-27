@@ -1,6 +1,4 @@
 ZSH_HIGHLIGHT_HIGHLIGHTERS=(main brackets pattern)
 
-# source ~/.zsh/dep/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-
 antigen bundle zsh-users/zsh-syntax-highlighting
 antigen bundle ael-code/zsh-colored-man-pages

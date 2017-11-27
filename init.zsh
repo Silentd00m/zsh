@@ -2,7 +2,11 @@
 # Options
 #
 
-source ~/.zsh/dep/antigen/antigen.zsh
+if [ ! -f ~/.zsh/antigen ]; then
+    git clone https://github.com/zsh-users/antigen ~/.zsh/antigen
+fi
+
+source ~/.zsh/antigen/antigen.zsh
 
 LOAD_MODULES=(
     "sane-defaults"
@@ -26,19 +30,18 @@ FALLBACK_THEME="gears_plain"
 
 autoload -U colors && colors													# Enable colors in prompt
 
-setopt prompt_subst
-setopt extended_glob
-
-[ -r /etc/profile.d/cnf.sh ] && . /etc/profile.d/cnf.sh
+# setopt prompt_subst
+# setopt extended_glob
 
 function OnLoad()
 {
     case "$TERM" in
-	xterm*)
-	    source "$HOME/.zsh/themes/$DEFAULT_THEME".zsh
-	    ;;
-	*)
-	    source "$HOME/.zsh/themes/$FALLBACK_THEME".zsh
+	    xterm*)
+	        source "$HOME/.zsh/themes/$DEFAULT_THEME".zsh
+	        ;;
+        *)
+	        source "$HOME/.zsh/themes/$FALLBACK_THEME".zsh
+            ;;
     esac
 
     __theme_Init
@@ -57,6 +60,10 @@ unset LOAD_THEME
 
 bindkey  "^[[H"   beginning-of-line
 bindkey  "^[[F"   end-of-line
+
+function zsh-update() {
+    antigen selfupdate && antigen update
+}
 
 function unzip_all() {
     find -name '*.zip' -exec sh -c 'unzip -d "${1%.*}" "$1"' _ {} \;

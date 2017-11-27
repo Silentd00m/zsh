@@ -22,3 +22,9 @@ zstyle ":plugin:history-search-multi-word" clear-on-cancel "yes"
 
 antigen bundle zsh-users/zsh-history-substring-search
 antigen bundle zdharma/history-search-multi-word
+
+zmodload zsh/terminfo
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down

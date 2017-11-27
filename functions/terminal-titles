@@ -1,1 +1,1 @@
-antigen bundle install jreese/zsh-titles
+antigen bundle jreese/zsh-titles
