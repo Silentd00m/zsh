@@ -16,9 +16,10 @@ LOAD_MODULES=(
     "alias-reminder"
     "terminal-titles"
     "auto-ls"
-    "fonts-and-profile"
+    "auto-environment"
+    "python"
 )
-DEFAULT_THEME="gears_fancy"
+DEFAULT_THEME="powerlevel9k_plain"
 FALLBACK_THEME="gears_plain"
 
 #### Do not change anything after this file
@@ -43,7 +44,7 @@ function OnLoad()
     __theme_Init
 
     for module in $LOAD_MODULES; do
-	source "$HOME/.zsh/functions/$module"
+	    source "$HOME/.zsh/functions/$module"
     done
 
     stty icrnl

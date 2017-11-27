@@ -1,0 +1,3 @@
+COLORS=true
+
+antigen bundle zpm-zsh/autoenv

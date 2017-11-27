@@ -1,0 +1,2 @@
+antigen bundle MichaelAquilina/zsh-autoswitch-virtualenv
+antigen bundle sharat87/pip-app
