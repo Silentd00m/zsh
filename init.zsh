@@ -2,7 +2,7 @@
 # Options
 #
 
-if [ ! -f ~/.zsh/antigen ]; then
+if [ ! -e ~/.zsh/antigen ]; then
     git clone https://github.com/zsh-users/antigen ~/.zsh/antigen
 fi
 
