@@ -41,7 +41,7 @@ if [ $_ZSH_FIRSTRUN -eq 1 ]; then
     echo -n "Edit now? [Yn]"
     read reply < /dev/tty
 
-    if [ $reply = "" ] || [ $reply = "y" ] || [ $reply = "Y" ]; then
+    if [ $reply == "" ] || [ $reply == "y" ] || [ $reply == "Y" ]; then
         echo ""
 
         echo -n  "Which editor? (default vi): "
