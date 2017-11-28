@@ -22,7 +22,7 @@ auto-environment
 python
 " > ~/.zsh/config/enabled_layers
 
-    echo "powerlevel9k" > ~/.zsh/config/theme
+    echo "powerlevel9k_plain" > ~/.zsh/config/theme
 fi
 
 if [ ! -e .zsh/config ]; then

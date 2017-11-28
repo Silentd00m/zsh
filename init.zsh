@@ -4,7 +4,7 @@
 
 zmodload zsh/mapfile
 
-DEFAULT_THEME=$mapfile[$HOME/.zsh/config/theme]
+DEFAULT_THEME=`cat $HOME/.zsh/config/theme`
 FALLBACK_THEME="gears_plain"
 
 #### Do not change anything after this file
