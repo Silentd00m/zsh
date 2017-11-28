@@ -2,25 +2,29 @@
 # Options
 #
 
-LOAD_MODULES=(
-    "sane-defaults"
-    "history"
-    "autocompletion"
-    "syntax-highlighting"
-    "git"
-    "notify"
-    "command-correction"
-    "regex"
-    "alias-reminder"
-    "terminal-titles"
-    "auto-ls"
-    "auto-environment"
-    "python"
-)
+zmodload zsh/mapfile
+
 DEFAULT_THEME="powerlevel9k_plain"
 FALLBACK_THEME="gears_plain"
 
 #### Do not change anything after this file
+
+if [ ! -e ~/.zsh/enabled_layers ]; then
+    echo "sane-defaults
+history # before autocompletion
+autocompletion
+syntax-highlighting
+git
+notify
+command-correction
+regex
+alias-reminder
+terminal-titles
+auto-ls
+auto-environment
+python
+" > ~/.zsh/enabled_layers
+fi
 
 if [ ! -e ~/.zsh/antigen ]; then
     git clone https://github.com/zsh-users/antigen ~/.zsh/antigen
@@ -29,9 +33,6 @@ fi
 source ~/.zsh/antigen/antigen.zsh
 
 autoload -U colors && colors													# Enable colors in prompt
-
-# setopt prompt_subst
-# setopt extended_glob
 
 function OnLoad()
 {
@@ -46,8 +47,10 @@ function OnLoad()
 
     __theme_Init
 
-    for module in $LOAD_MODULES; do
-	    source "$HOME/.zsh/functions/$module"
+    for layer in ${(f)mapfile[$HOME/.zsh/enabled_layers]}; do
+        if [[ $layer != "#"* ]]; then
+	        source "$HOME/.zsh/layers/${${layer%%#*}// /}"
+        fi
     done
 
     stty icrnl
