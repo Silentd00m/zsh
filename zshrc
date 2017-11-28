@@ -37,8 +37,6 @@ fi
 source ~/.zsh/init.zsh
 
 if [ $_ZSH_FIRSTRUN -eq 1 ]; then
-    local reply editor
-
     echo "Currently running ALL functions. Edit file: \".zsh/config/enabled_functions\" to customize."
     echo -n "Edit now? [Yn]"
     read reply < /dev/tty
