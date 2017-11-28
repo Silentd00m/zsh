@@ -7,7 +7,8 @@ if [ ! -e .zsh/ ]; then
 
     mkdir -p ~/.zsh/config
 
-    echo "sane-defaults
+    echo "aliases
+sane-defaults
 history # before autocompletion
 autocompletion
 syntax-highlighting
@@ -21,12 +22,14 @@ auto-ls
 auto-environment
 python
 " > ~/.zsh/config/enabled_layers
-
-    echo "powerlevel9k_plain" > ~/.zsh/config/theme
 fi
 
 if [ ! -e .zsh/config ]; then
    mkdir -p ~/.zsh/config
+fi
+
+if [ ! -e ~/.zsh/config/theme ]; then
+   echo "powerlevel9k_plain" > ~/.zsh/config/theme
 fi
 
 source ~/.zsh/init.zsh
@@ -35,14 +38,14 @@ if [ $_ZSH_FIRSTRUN -eq 1 ]; then
     local reply editor
 
     echo "Currently running ALL functions. Edit file: \".zsh/config/enabled_functions\" to customize."
-    echo "Edit now? [Yn]"
-    read reply
+    echo -n "Edit now? [Yn]"
+    read reply < /dev/tty
 
     if [ $reply = "" ] || [ $reply = "y" ] || [ $reply = "Y" ]; then
         echo ""
 
-        echo "Which editor? (default vi): "
-        read editor
+        echo -n  "Which editor? (default vi): "
+        read editor < /dev/tty
 
         exec $editor "~/.zsh/config/enabled_layers"
     fi
