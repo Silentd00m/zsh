@@ -1,3 +1,3 @@
 AUTO_LS_COMMANDS=(ls)
 
-antigen bundle "desyncr/auto-ls"
+antigen bundle https://github.com/desyncr/auto-ls

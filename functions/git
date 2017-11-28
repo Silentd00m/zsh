@@ -1,5 +1,5 @@
-antigen bundle supercrabtree/k
-antigen bundle unixorn/git-extra-commands
+antigen bundle https://github.com/supercrabtree/k
+antigen bundle https://github.com/unixorn/git-extra-commands
 
 alias kh="k -h"
 

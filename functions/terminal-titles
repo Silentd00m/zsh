@@ -1,1 +1,1 @@
-antigen bundle jreese/zsh-titles
+antigen bundle https://github.com/jreese/zsh-titles

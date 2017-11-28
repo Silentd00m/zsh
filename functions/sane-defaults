@@ -50,4 +50,4 @@ fi
 bindkey "^[[1;5C" forward-word
 bindkey "^[[1;5D" backward-word
 
-antigen bundle peterhurford/up.zsh
+antigen bundle https://github.com/peterhurford/up.zsh

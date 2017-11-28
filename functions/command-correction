@@ -1,3 +1,4 @@
 antigen bundle Tarrasch/zsh-command-not-found
 
-# [ -r /etc/profile.d/cnf.sh ] && . /etc/profile.d/cnf.sh
+setopt correct
+setopt correctall

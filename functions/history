@@ -20,8 +20,8 @@ function __list_contains() {
 
 zstyle ":plugin:history-search-multi-word" clear-on-cancel "yes"
 
-antigen bundle zsh-users/zsh-history-substring-search
-antigen bundle zdharma/history-search-multi-word
+antigen bundle https://github.com/zsh-users/zsh-history-substring-search
+antigen bundle https://github.com/zdharma/history-search-multi-word
 
 zmodload zsh/terminfo
 bindkey "$terminfo[kcuu1]" history-substring-search-up

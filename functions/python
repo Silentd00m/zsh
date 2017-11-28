@@ -1,4 +1,4 @@
-antigen bundle MichaelAquilina/zsh-autoswitch-virtualenv
-antigen bundle sharat87/pip-app
+antigen bundle https://github.com/MichaelAquilina/zsh-autoswitch-virtualenv
+antigen bundle https://github.com/sharat87/pip-app
 
 source =virtualenvwrapper.sh
