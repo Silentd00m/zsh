@@ -6,7 +6,13 @@ if [ ! -e .zsh/ ]; then
     git clone https://github.com/silentd00m/zsh .zsh
 
     mkdir -p ~/.zsh/config
+fi
 
+if [ ! -e .zsh/config ]; then
+   mkdir -p ~/.zsh/config
+fi
+
+if [ ! -e ~/.zsh/config/enabled_layers ] ; then
     echo "aliases
 sane-defaults
 history # before autocompletion
@@ -22,10 +28,6 @@ auto-ls
 auto-environment
 python
 " > ~/.zsh/config/enabled_layers
-fi
-
-if [ ! -e .zsh/config ]; then
-   mkdir -p ~/.zsh/config
 fi
 
 if [ ! -e ~/.zsh/config/theme ]; then
