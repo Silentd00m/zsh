@@ -37,16 +37,5 @@ fi
 source ~/.zsh/init.zsh
 
 if [ $_ZSH_FIRSTRUN -eq 1 ]; then
-    echo "Currently running ALL functions. Edit file: \".zsh/config/enabled_functions\" to customize."
-    echo -n "Edit now? [Yn]"
-    read reply < /dev/tty
-
-    if [ $reply == "" ] || [ $reply == "y" ] || [ $reply == "Y" ]; then
-        echo ""
-
-        echo -n  "Which editor? (default vi): "
-        read editor < /dev/tty
-
-        exec $editor "~/.zsh/config/enabled_layers"
-    fi
+    echo "$fg[white]$bg[red]Currently running ALL functions. Edit file: \".zsh/config/enabled_functions\" to customize.$resetcolor"
 fi
