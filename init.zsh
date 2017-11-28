@@ -4,27 +4,10 @@
 
 zmodload zsh/mapfile
 
-DEFAULT_THEME="powerlevel9k_plain"
+DEFAULT_THEME=$mapfile[$HOME/.zsh/config/theme]
 FALLBACK_THEME="gears_plain"
 
 #### Do not change anything after this file
-
-if [ ! -e ~/.zsh/enabled_layers ]; then
-    echo "sane-defaults
-history # before autocompletion
-autocompletion
-syntax-highlighting
-git
-notify
-command-correction
-regex
-alias-reminder
-terminal-titles
-auto-ls
-auto-environment
-python
-" > ~/.zsh/enabled_layers
-fi
 
 if [ ! -e ~/.zsh/antigen ]; then
     git clone https://github.com/zsh-users/antigen ~/.zsh/antigen
@@ -47,7 +30,7 @@ function OnLoad()
 
     __theme_Init
 
-    for layer in ${(f)mapfile[$HOME/.zsh/enabled_layers]}; do
+    for layer in ${(f)mapfile[$HOME/.zsh/config/enabled_layers]}; do
         if [[ $layer != "#"* ]]; then
 	        source "$HOME/.zsh/layers/${${layer%%#*}// /}"
         fi
