@@ -1,6 +1,6 @@
 _ZSH_FIRSTRUN=0
 
-if [ ! -e .zsh/ ]; then
+if [ ! -e ~/.zsh/ ]; then
     _ZSH_FIRSTRUN=1
 
     git clone https://github.com/silentd00m/zsh .zsh
@@ -8,7 +8,7 @@ if [ ! -e .zsh/ ]; then
     mkdir -p ~/.zsh/config
 fi
 
-if [ ! -e .zsh/config ]; then
+if [ ! -e ~/.zsh/config ]; then
    mkdir -p ~/.zsh/config
 fi
 
