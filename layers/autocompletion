@@ -1,6 +1,8 @@
 autoload -U compinit && compinit # Enable autocompletion
 autoload -U +X bashcompinit && bashcompinit # Also use bash only completions
 
+antigen bundle https://github.com/hlissner/zsh-autopair
+
 # Setup zsh-autosuggestions
 antigen bundle https://github.com/zsh-users/zsh-autosuggestions
 
