@@ -32,7 +32,7 @@ function OnLoad()
 
     for layer in ${(f)mapfile[$HOME/.zsh/config/enabled_layers]}; do
         if [[ $layer != "#"* ]]; then
-	        source "$HOME/.zsh/layers/${${layer%%#*}// /}"
+	        source "$HOME/.zsh/layers/${${layer%%\#*}// /}"
         fi
     done
 
